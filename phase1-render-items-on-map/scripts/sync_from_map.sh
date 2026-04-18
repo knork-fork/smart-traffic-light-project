@@ -32,11 +32,13 @@ updated=$(echo "$response" | jq \
   .data |
   {
     car: [.[] | select(.data.tip == "auto") | {
+      ID: .__id,
       x: .__xmin,
       y: .__ymin,
       heading: (if .data.heading == null then 0 else (.data.heading | tonumber) end)
     }],
     pedestrian: [.[] | select(.data.tip == "pješak") | {
+      ID: .__id,
       x: .__xmin,
       y: .__ymin,
       heading: (if .data.heading == null then 0 else (.data.heading | tonumber) end)

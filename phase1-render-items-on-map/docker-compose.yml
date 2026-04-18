@@ -1,0 +1,9 @@
+services:
+  frontend:
+    image: node:20-alpine
+    working_dir: /app/frontend
+    volumes:
+      - .:/app
+    ports:
+      - "20050:20050"
+    command: sh -c "npm install && npm run dev"
